@@ -19,11 +19,20 @@
     </style>
     <script>
         let r=0; //각도를 누적시킬 전역변수
+        let flag=true; //회전 방향을 결정짓은 논리값
 
         //물체를 회전시키기
         function rotate(){
             //console.log("rotate() 호출..");
-            r++;
+
+            if(flag){//우측으로 돌때
+                r++;
+            }else{//좌측으로 돌때
+                r--;
+            }
+            if(r%360==0){
+                flag=!flag;
+            }
             let h1=document.querySelector("h1");
             h1.style.transform="rotate("+r+"deg)";
         }
